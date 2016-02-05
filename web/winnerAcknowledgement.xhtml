@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template/baseTemplate.xhtml">
+        <ui:define name="title">Congratulations</ui:define>
+        <ui:define name="top">Acknowledgement</ui:define>
+
+        <ui:define name="content">
+            <h:link value="Home Page" outcome="index" />
+
+            <h1><strong>CONGRATULATIONS!!</strong> You are the winner of two movie tickets.</h1>
+            <h3>Thank you <h:outputText value="#{student.firstName}" /> for completing the survey.</h3>
+
+            <h:panelGrid>
+                The following are the details of the raffle you entered in the survey page:
+                <b>Raffle:</b> <h:outputText value="#{student.raffle}" />
+                <b>Mean:</b> <h:outputText value="#{student.winningResult.mean}" />
+                <b>Standard Deviation:</b> <h:outputText value="#{student.winningResult.standardDeviation}" />
+            </h:panelGrid>
+        </ui:define>
+    </ui:composition>
+</html>
+

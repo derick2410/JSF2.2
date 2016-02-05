@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template/baseTemplate.xhtml">
+        <ui:define name="title">Student Survey List</ui:define>
+        <ui:define name="top">List of Student Surveys</ui:define>
+
+        <ui:define name="content">
+            <h:link value="Home Page" outcome="index" />
+
+            <h:dataTable value="#{studentService.studentsSurvey}" var="survey" rowClasses="oddRows, evenRows" >
+                <h:column>
+                    <f:facet name="header">First Name</f:facet>
+                        #{survey.firstName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name</f:facet>
+                        #{survey.lastName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Street Address</f:facet>
+                        #{survey.streetAddress}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">City</f:facet>
+                        #{survey.city}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">State</f:facet>
+                        #{survey.state}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Zip</f:facet>
+                        #{survey.zip}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Telephone Number</f:facet>
+                        #{survey.telNumber}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                        #{survey.email}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Date of Survey</f:facet>
+                        #{survey.dateOfSurvey}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Like about Campus</f:facet>
+                        #{survey.stringAppendedCampusLike}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Interest in University</f:facet>
+                        #{survey.universityInterest}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Recommend</f:facet>
+                        #{survey.schoolRecommend}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Add. Comments</f:facet>
+                        #{survey.addComm}
+                </h:column>
+            </h:dataTable>
+        </ui:define>
+    </ui:composition>
+</html>

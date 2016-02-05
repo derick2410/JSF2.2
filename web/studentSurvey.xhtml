@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template/baseTemplate.xhtml">
+        <ui:define name="title">Student Survey</ui:define>
+        <ui:define name="top">Student Survey</ui:define>
+
+        <ui:define name="content">
+            <h:form>
+                <h:panelGrid columns="3" >
+                    <f:facet name="header">
+                        <h:outputText value="Please fill the survey form."/>
+                    </f:facet>
+
+                    <h:outputLabel id="firstNameLabel" for="firstName" value="First Name" />
+                    <h:inputText id="firstName" value="#{student.firstName}" required="true" 
+                                 requiredMessage="You must enter your first name."
+                                 validatorMessage="First name should not be more than 15 characters." 
+                                 validator="#{validation.validateName}" >
+                        <f:validateLength for="firstName" maximum="15" />
+                    </h:inputText>
+                    <h:message for="firstName" styleClass="error" />
+
+                    <h:outputLabel id="lastNameLabel" for="lastNameLabel" value="Last Name" />
+                    <h:inputText id="lastName" value="#{student.lastName}" required="true"
+                                 requiredMessage="You must enter your last name."
+                                 validator="#{validation.validateName}" />
+                    <h:message for="lastName" styleClass="error" />
+
+                    <h:outputLabel id="streetAddressLabel" for="streetAddress" value="Street Address" />
+                    <h:inputText id="streetAddress" value="#{student.streetAddress}" 
+                                 validatorMessage="Street Address should not be more than 30 characters." >
+                        <f:validateLength for="streetAddress" maximum="30" />
+                    </h:inputText>
+                    <h:message for="streetAddress" styleClass="error" />
+
+                    <h:outputLabel id="cityLabel" for="city" value="City" />
+                    <h:inputText id="city" value="#{student.city}" />
+                    <h:message for="city" />
+
+                    <h:outputLabel id="stateLabel" for="state" value="State" />
+                    <h:inputText id="state" value="#{student.state}" />
+                    <h:message for="state" styleClass="error" />
+
+                    <h:outputLabel id="zipLabel" for="zip" value="Zip" />
+                    <h:inputText id="zip" value="#{student.zip}" 
+                                 validatorMessage="Zip code should of exactly 5 characters." >
+                        <f:validateLength for="zip" maximum="5" minimum="5" />
+                    </h:inputText>
+                    <h:message for="zip" styleClass="error" />
+
+                    <h:outputLabel id="telNumberLabel" for="telNumber" value="Telephone #" />
+                    <h:inputText id="telNumber" value="#{student.telNumber}" 
+                                 validator="#{validation.validateTelephoneNumber}" />
+                    <h:message for="telNumber" styleClass="error" />
+
+                    <h:outputLabel id="emailLabel" for="email" value="Email" />
+                    <h:inputText id="email" value="#{student.email}" required="true" 
+                                 requiredMessage="You must enter your email address." 
+                                 validator="#{validation.validateEmailAddress}" />
+                    <h:message for="email" styleClass="error" />
+
+                    <h:outputLabel id="dateOfSurveyLabel" for="dateOfSurvey" value="Date of Survey" />
+                    <h:inputText id="dateOfSurvey" value="#{student.dateOfSurvey}" 
+                                 validator="#{validation.validateDateOfSurvey}" />
+                    <h:message for="dateOfSurvey" styleClass="error" />
+
+                    <h:outputLabel id="campusLikeLabel" for="campusLike" value="What do you like about the campus?" />
+                    <h:selectManyCheckbox id="campusLike" value="#{student.campusLike}" layout="lineDirection" required="true" 
+                                          requiredMessage="You must check atleast one option about your liking of campus." >
+                        <f:selectItem id="students" itemLabel="Students" itemValue="Students" />
+                        <f:selectItem id="location" itemLabel="Location" itemValue="Location" />
+                        <f:selectItem id="campus" itemLabel="Campus" itemValue="Campus" />
+                        <f:selectItem id="atmosphere" itemLabel="Atmosphere" itemValue="Atmosphere" />
+                        <f:selectItem id="dormRooms" itemLabel="Dorm Rooms" itemValue="Dorm Rooms" />
+                        <f:selectItem id="sports" itemLabel="Sports" itemValue="Sports" />
+                    </h:selectManyCheckbox>
+                    <h:message for="campusLike" styleClass="error" />
+
+                    <h:outputLabel id="universityInterestLabel" for="universityInterest" 
+                                   value="How did you became interested in the university?" />
+                    <h:selectOneRadio id="universityInterest" value="#{student.universityInterest}" required="true"
+                                      requiredMessage="You must select the option how did you get interested in the university." >
+                        <f:selectItem id="friends" itemLabel="Friends" itemValue="Friends" />
+                        <f:selectItem id="television" itemLabel="Television" itemValue="Television" />
+                        <f:selectItem id="internet" itemLabel="Internet" itemValue="Internet" />
+                        <f:selectItem id="other" itemLabel="Other" itemValue="Other" />
+                    </h:selectOneRadio>
+                    <h:message for="universityInterest" styleClass="error" />
+
+                    <h:outputLabel id="schoolRecommendLabel" for="schoolRecommend" 
+                                   value="Select the likelihood of recommending this school to other prospective student." />
+                    <h:selectOneMenu id="schoolRecommend" value="#{student.schoolRecommend}" required="true"
+                                     requiredMessage="You must select the option of willing to recomend." >
+                        <f:selectItem id="veryLikely" itemLabel="Very Likely" itemValue="Very Likely" />
+                        <f:selectItem id="likely" itemLabel="Likely" itemValue="Likely" />
+                        <f:selectItem id="unlikely" itemLabel="Unlikely" itemValue="Unlikely" />
+                    </h:selectOneMenu>
+                    <h:message for="schoolRecommend" styleClass="error" />
+
+                    <h:outputLabel id="raffleLabel" for="raffle" value="Raffle" />
+                    <h:inputText id="raffle" value="#{student.raffle}" size="20" />
+                    <h:message for="raffle" />
+
+                    <h:outputLabel id="addCommLabel" for="addComm" value="Additional Comments" />
+                    <h:inputTextarea id="addComm" value="#{student.addComm}" />
+                    <h:message for="addComm" styleClass="error" />
+
+                    <f:facet name="footer">
+                        <h:panelGroup style="display:block; text-align:center">
+                            <h:commandButton value="Submit" action="#{student.validateForm}" />
+                            <h:commandButton value="Cancel" action="index" immediate="true" />
+                        </h:panelGroup>
+                    </f:facet>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
